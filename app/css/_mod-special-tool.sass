@@ -1,0 +1,152 @@
+$mod-tool-years: 16
+$mod-tool-rows: 14
+$mod-tool-bar-gradient: linear-gradient(-90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 20%, rgba(255, 255, 255, 0) 100%)
+
+$mod-tool-columns: [start] 1fr [y2007] 1fr [y2008] 1fr [y2009] 1fr [y2010] 1fr [y2011] 1fr [y2012] 1fr [y2013] 1fr [y2014] 1fr [y2015] 1fr [y2016] 1fr [y2017] 1fr [y2018] 1fr [y2019] 1fr [y2020] 1fr [spacer] 3fr[end]
+
+.pag-content.pag--is-special-tool
+    grid-template-areas: "spacerLeft header header header header" "spacerLeft contentVisual contentVisual contentVisual contentVisual" "spacerLeft contentVisual contentVisual contentVisual contentVisual" "spacerBottom spacerBottom spacerBottom spacerBottom spacerBottom" !important
+    +mobile
+        // grid-template-areas: "spacerLeft header header" 
+        // "spacerLeft contentVisual nav" 
+        // "spacerLeft contentVisual nav" 
+        // "spacerLeft contentVisual nav" 
+        // "spacerLeft spacerBottom spacerBottom" 
+        grid-template-areas: "spacerLeft header header" "spacerLeft contentVisual contentVisual" "spacerLeft contentVisual contentVisual" "spacerLeft contentVisual contentVisual" "spacerLeft spacerBottom spacerBottom" !important
+    .mod-txt
+        grid-area: contentVisual
+        +mobile
+            left: 0
+
+.mod-tool
+    display: flex
+    align-items: center
+    grid-area: contentVisual
+    // +mobile
+    //     grid-column: content
+    //     grid-row: logo / end   
+    > .tool-chart
+        display: grid
+        grid-template-columns: $mod-tool-columns
+        grid-template-rows: [start] 4.54% [shtml] 4.54% [sproduct] 18.18% [sprinciple] 4.54% [sfigma] 4.54% [ssketch] 4.54% [sux] 9.09% [sframer] 4.54% [sui] 9.09% [san] 4.54% [sid] 4.54% [sai] 4.54% [sps] 4.54% [sgrafikdesign] 18.18% [gapskills] 5px [scale] 1px [gaplabel] 15px [label] 20px
+        // grid-template-rows: [start] 1fr [shtml] 1fr [sproduct] 4fr [sprinciple] 1fr [sfigma] 1fr [ssketch] 1fr [sux] 2fr [sframer] 1fr [sui] 2fr [san] 1fr [sid] 1fr [sai] 1fr [sps] 1fr [sgrafikdesign] 4fr [gapskills] 5px [scale] 1px [gaplabel] 15px [label] 50px
+        width: 100%
+        height: 100%
+        max-height: 350px
+        > .chart-scale
+            grid-column: start / end
+            grid-row: scale / scale
+            background: #000
+        > .chart-labels
+            grid-column: start / end
+            grid-row: label
+            display: grid
+            grid-template-columns: $mod-tool-columns
+            grid-template-rows: 20px
+            .chart-label-item
+                +mobile
+                    transform: rotate(-90deg)
+                    min-width: 0
+            @extend %textstyle-label
+            @for $i from 1 through 16 
+                > .chart-label-item:nth-child(#{$i})
+                    grid-column: #{$i}
+                    grid-row: 1
+    > .background
+        position: absolute
+        left: 0px
+        top: 0px
+        z-index: -1
+        background: #fff
+        width: 100vw
+        height: 100vh
+
+.mod-tool
+    > .tool-chart
+        > * 
+            display: flex
+            align-items: center
+            border-radius: 4000px 0 0 0
+            > .bar-text
+                @extend %textstyle-thesmallone
+                color: #fff
+                text-transform: uppercase
+                margin-left: 10px
+        > .bar-grafikdesign
+            grid-column: start / end
+            grid-row: sproduct / gapskills
+            background: rgba(255,94,233,0.3) $mod-tool-bar-gradient
+        > .bar-grafikdesign-text-gd
+            grid-column: start / end
+            grid-row: sgrafikdesign
+            > .bar-text
+                margin-left: 30px
+                font-size: 18px
+                color: $col-brand
+        > .bar-grafikdesign-text-pd
+            grid-column: start / end
+            grid-row: sproduct
+            > .bar-text
+                text-align: right
+                width: 100%
+                margin-right: 100px
+                font-size: 18px
+                color: $col-brand
+                +mobile
+                    margin-right: 50px
+        > .bar-ps
+            grid-column: start / end
+            grid-row: sps
+            background: rgba(47,126,158,1) $mod-tool-bar-gradient
+            margin-left: 30px
+            border-radius: 400px 0 0 400px
+        > .bar-ai
+            grid-column: y2007 / end
+            grid-row: sai
+            background: rgba(233,204,55,1) $mod-tool-bar-gradient
+        > .bar-id
+            grid-column: y2007 / end
+            grid-row: sid
+            background: #F414A8 $mod-tool-bar-gradient
+            margin-left: 10px
+        > .bar-an
+            grid-column: y2007 / end
+            grid-row: san
+            background: #CB0C00 $mod-tool-bar-gradient
+            margin-left: 20px
+        > .bar-ui
+            grid-column: y2009 / end
+            grid-row: sui
+            background: #FF5EE9 $mod-tool-bar-gradient
+            > .bar-text
+                margin-left: 20px
+        > .bar-framer
+            grid-column: y2013 / end
+            grid-row: sframer
+            background: #2C2E35 $mod-tool-bar-gradient
+        > .bar-ux
+            grid-column: y2014 / end
+            grid-row: sux
+            background: #FF5EE9 $mod-tool-bar-gradient
+            > .bar-text
+                margin-left: 20px
+        > .bar-sketch
+            grid-column: y2015 / end
+            grid-row: ssketch
+            background: #F2E03D $mod-tool-bar-gradient
+        > .bar-figma
+            grid-column: y2016 / end
+            grid-row: sfigma
+            background: #2C2E35  $mod-tool-bar-gradient
+        > .bar-principle
+            grid-column: y2018 / end
+            grid-row: sprinciple
+            background: #965ABF $mod-tool-bar-gradient
+        > .bar-html
+            grid-column: y2012 / end
+            grid-row: shtml
+            background: #8D8D8D $mod-tool-bar-gradient
+        > .bar-gsap
+            grid-column: y2014 / end
+            grid-row: start
+            background: #55D209 $mod-tool-bar-gradient

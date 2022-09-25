@@ -1,0 +1,80 @@
+$basefont: 'cera', monospace
+
+$col-grey: #B3B3B3
+$col-brand: #FF5EE9
+
+
+$grd-tmpl-full: "spacerLeft header header header header" "spacerLeft contentVisual contentVisual contentVisual nav" "spacerLeft contentVisual contentVisual contentVisual nav" "spacerBottom spacerBottom spacerBottom spacerBottom spacerBottom"
+
+@function calculateRem($size) 
+    $remSize: $size / 16px
+    @return #{$remSize}rem
+
+=fontSize($size) 
+    font-size: $size //Fallback in px
+    font-size: calculateRem($size)
+
+=lineHeight($size) 
+    line-height: $size //Fallback in px
+    line-height: calculateRem($size)
+
+$mobilexs-width: 420px
+$tablet-width: 768px
+$desktop-width: 1280px
+$desktop-height: 720px
+
+=desktopOnly
+    @media (max-width: #{$desktop-width}), (max-height: #{$desktop-height})
+        @content
+
+=desktop
+    @media (min-width: #{$desktop-width})
+        @content
+
+=tablet
+    @media (max-width: #{$desktop-width - 1px})
+        @content
+
+=mobile
+    @media (max-width:#{$tablet-width - 1px})
+        @content
+
+=mobilexs
+    @media (max-width:#{$mobilexs-width})
+        @content
+
+
+%transition-nav-hover
+    transition: all ease 0.5s
+
+%ref-default-boxshadow
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.25)
+
+// https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "")
+  $index: str-index($string, $search)
+  @if $index
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+  @return $string
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+=font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
+  $src: null
+  $extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"))
+  $formats: (otf: "opentype", ttf: "truetype")
+  @each $ext in $exts
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma)
+  @font-face
+    font-family: quote($name)
+    font-style: $style
+    font-weight: $weight
+    src: $src

@@ -1,0 +1,64 @@
+header
+    position: fixed
+    left: calc(10% + 100px)
+    top: 25px
+    width: 100%
+    z-index: 1000
+    overflow: hidden
+    
+%header-box
+    display: block
+    float: left
+    min-width: 45px
+    height: 45px
+    z-index: 100
+    line-height: 43px
+    @extend %textstyle-thesmallone
+
+#logo
+    width: 45px
+    background: #fff
+    color: #000
+    text-align: center
+    border-radius: 50%
+    @extend %header-box
+    margin-right: 10px
+    cursor: pointer
+    a 
+        text-decoration: none
+    span
+        display: none
+
+#pag-titles
+    @extend %header-box
+    position: relative
+    overflow: hidden
+    color: #fff
+    width: 50%
+    &:after
+        content: " "
+        width: 200px
+        height: 10px
+        position: absolute
+        left: 50px
+        top: 0px
+        background: #000
+        opacity: 0
+
+.pag-title
+    position: fixed
+    overflow: hidden
+    top: 0px
+    white-space: nowrap
+    color: $col-brand
+
+.el-head-line
+    position: fixed
+    width: 200px
+    height: 10px
+    background: $col-brand
+    top: calc(50% - 6px)
+    left: 65%
+    z-index: 2
+
+

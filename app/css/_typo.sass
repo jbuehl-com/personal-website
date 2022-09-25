@@ -1,0 +1,99 @@
+// check the font-import-problem again
+@font-face 
+    font-family: "cera"
+    font-weight: 400
+    src: url("../fonts/cera/Regular/cerabasic-regular-webfont.woff") format("woff");
+@font-face 
+    font-family: "cera"
+    font-weight: 600
+    src: url("../fonts/cera/Bold/cerabasic-bold-webfont.woff") format("woff");
+@font-face 
+    font-family: "cera"
+    font-weight: 800
+    src: url("../fonts/cera/Black/cerabasic-black-webfont.woff") format("woff");
+
+@font-face 
+    font-family: "din-cond"
+    font-weight: 400
+    src: url("../fonts/urwdin/Condensed/Regular/URWDINCond-Regular.woff") format("woff");
+@font-face 
+    font-family: "din-cond"
+    font-weight: 600
+    src: url("../fonts/urwdin/Condensed/Bold/URWDINCond-Bold.woff") format("woff");
+@font-face 
+    font-family: "din-cond"
+    font-weight: 800
+    src: url("../fonts/urwdin/Condensed/Black/URWDINCond-Black.woff") format("woff");
+
+// copy, figcaption
+%textstyle-copy
+    font-family: "cera", sans-serif
+    font-size: 16px
+    line-height: 1.5
+    font-weight: 400
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    +mobile
+        font-size: 14px
+
+// copy in bold
+%textstyle-copy-bold
+    font-family: "cera", sans-serif
+    font-weight: 800
+
+// pagetitles, logo, pagination, navigation
+%textstyle-thesmallone
+    font-family: "cera", sans-serif
+    font-size: 14px
+    line-height: 1.5
+    font-weight: 800
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+// reflegend label
+%textstyle-label
+    color: $col-grey
+    font-family: "din-cond", sans-serif
+    font-weight: bold
+    font-size: 12px
+    text-transform: uppercase
+    letter-spacing: 1px
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+// reflegend value
+%textstyle-form
+    color: $col-grey
+    font-family: "cera", sans-serif
+    font-weight: 800
+    font-size: 16px
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+// headline
+%textstyle-headline
+    font-size: 54px
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    +mobile
+        font-size: 38px
+
+h2, .pag-headline > *
+    @extend %textstyle-headline
+
+p
+    @extend %textstyle-copy
+    max-width: 800px
+
+strong
+    font-weight: 600
+
+.link-button
+    @extend %textstyle-label
+    display: inline-block
+    font-size: 20px
+    color: #fff
+    background: $col-brand
+    padding: 25px 30px 15px 30px
+    text-decoration: none
+    border-radius: 35px
